@@ -1,0 +1,4 @@
+---
+autosnap_destdir: ""
+autosnap_lib_dir: ""
+autosnap_repo_dir: "{{ ansible_env.HOME }}/opt"
