@@ -33,8 +33,10 @@ As the package is an addition to the [timeshift](https://github.com/linuxmint/ti
 Example Playbook
 ----------------
 
-    - hosts: localhost
-      roles:
-         - role: whalej84.timeshift-autosnap-apt
-		   vars: autosnap_repo_dir: "/opt/timeshift-autosnap-apt"
+```yaml
+- hosts: localhost
+  roles:
+    - role: whalej84.timeshift-autosnap-apt
+      vars: autosnap_repo_dir: "/opt/timeshift-autosnap-apt"
+```
 
