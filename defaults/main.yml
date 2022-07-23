@@ -2,3 +2,10 @@
 autosnap_destdir: ""
 autosnap_lib_dir: ""
 autosnap_repo_dir: "{{ ansible_env.HOME }}/opt"
+snapshot_boot: "true"
+snapshot_efi: "true"
+skip_autosnap: "false"
+delete_snapshots: "true"
+max_snapshots: 3
+update_grub: "true"
+snapshot_description: "{timeshift-autosnap} {created before call to APT}"

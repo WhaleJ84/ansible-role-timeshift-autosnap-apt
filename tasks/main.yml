@@ -18,6 +18,58 @@
   when: ansible_facts['pkg_mgr'] == "apt"
   tags: install
 
+- name: CONFIGURE | timeshift-autosnap-apt
+  block:
+    - name: CONFIGURE | snapshotBoot
+      ansible.builtin.lineinfile:
+        path: "{{ autosnap_destdir }}/etc/timeshift-autosnap-apt.conf"
+        regexp: "^snapshotBoot="
+        line: "snapshotBoot={{ snapshot_boot }}"
+      become: true
+
+    - name: CONFIGURE | snapshotEFI
+      ansible.builtin.lineinfile:
+        path: "{{ autosnap_destdir }}/etc/timeshift-autosnap-apt.conf"
+        regexp: "^snapshotEFI="
+        line: "snapshotEFI={{ snapshot_efi }}"
+      become: true
+
+    - name: CONFIGURE | skipAutosnap
+      ansible.builtin.lineinfile:
+        path: "{{ autosnap_destdir }}/etc/timeshift-autosnap-apt.conf"
+        regexp: "^skipAutosnap="
+        line: "skipAutosnap={{ skip_autosnap }}"
+      become: true
+
+    - name: CONFIGURE | deleteSnapshots
+      ansible.builtin.lineinfile:
+        path: "{{ autosnap_destdir }}/etc/timeshift-autosnap-apt.conf"
+        regexp: "^deleteSnapshots="
+        line: "deleteSnapshots={{ delete_snapshots }}"
+      become: true
+
+    - name: CONFIGURE | maxSnapshots
+      ansible.builtin.lineinfile:
+        path: "{{ autosnap_destdir }}/etc/timeshift-autosnap-apt.conf"
+        regexp: "^maxSnapshots="
+        line: "maxSnapshots={{ max_snapshots }}"
+      become: true
+
+    - name: CONFIGURE | updateGrub
+      ansible.builtin.lineinfile:
+        path: "{{ autosnap_destdir }}/etc/timeshift-autosnap-apt.conf"
+        regexp: "^updateGrub="
+        line: "updateGrub={{ update_grub }}"
+      become: true
+
+    - name: CONFIGURE | snapshotDescription
+      ansible.builtin.lineinfile:
+        path: "{{ autosnap_destdir }}/etc/timeshift-autosnap-apt.conf"
+        regexp: "^snapshotDescription="
+        line: "snapshotDescription={{ snapshot_description }}"
+      become: true
+  tags: configure
+
 - name: REMOVE | timeshift-autosnap-apt
   block:
     - name: REMOVE | Remove timeshift-autosnap-apt from system
